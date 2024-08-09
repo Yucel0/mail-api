@@ -1,13 +1,14 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
+import cors from 'cors';
 import { config } from 'dotenv';
-import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = 3001;
 
 config();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors());
 
 function render(fullname, message, email) {
     return `<div>
